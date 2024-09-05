@@ -3,8 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <title>App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  .checked {
+    color: orange;
+  }
+  </style>
+  <script>
+    async function Purchase() {
+      try {
+        const response = await fetch('/api/purchase', {
+          method: 'POST',
+        });
+
+        const data = await response.json();
+        alert(`Response from API: ${JSON.stringify(data)}`);
+      } catch (error) {
+        console.error('Error calling API:', error);
+      }
+    }
+  </script>
   </head>
   <body>
-    {{ message }}
+    <button onclick="Purchase()">Buy (1 <span class="fa fa-star checked"></span>)</button>
   </body>
 </html>
